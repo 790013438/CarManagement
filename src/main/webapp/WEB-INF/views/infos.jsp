@@ -22,8 +22,8 @@
             </tr>
             <c:forEach items="${infos}" var="info">
                 <tr>
-                    <td>${course.reason}</td>
-                    <td>${course.punish}</td>
+                    <td>${info.reason}</td>
+                    <td>${info.punish}</td>
                     <td>${info.process}</td>
                 </tr>
             </c:forEach>
