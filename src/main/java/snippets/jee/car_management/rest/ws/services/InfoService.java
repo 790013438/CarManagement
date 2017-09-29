@@ -13,8 +13,8 @@ import org.springframework.stereotype.Controller;
 import snippets.jee.car_management.dao.InfoDAO;
 import snippets.jee.car_management.rest.ws.dto.InfoDTO;
 
-@Controller
 @Path("/info")
+@Controller("info_ser")
 public class InfoService {
 
     @Autowired

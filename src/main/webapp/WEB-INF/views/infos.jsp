@@ -5,15 +5,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Insert title here</title>
+        <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <style>
             table { border-collapse: collapse; border-spacing: 0px; }
 
             table, th, td { padding: 5px; border: 1px solid black; }
         </style>
     </head>
-    <body>
-        <h2>违章信息</h2>
-        <table>
+	      <table>
             <tr>
                 <th>原因</th>
                 <th>日期</th>
@@ -28,6 +27,34 @@
                 </tr>
             </c:forEach>
         </table>
+        <div class="container">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <h1>违章信息</h1>
+                    <hr>
+                    <c:if test="${not empty hint}">
+                        <span style="color='red''">${hint}</span>
+                    </c:if>
+                    <table id="info" class="table table-striped">
+                        <tr>
+                            <th>处理编号</th>
+                            <th>车主姓名</th>
+                            <th>车牌号</th>
+                            <th>违章日期</th>
+                            <th>处罚原因</th>
+                            <th>处理决定</th>
+                            <th>处理情况</th>
+                        </tr>
+                    </table>
+                    <div align="center">
+                        <a id="first">首页</a>&nbsp;&nbsp;    
+                        <a id="prev">上一页</a>&nbsp;&nbsp;
+                        <a id="next">下一页</a>&nbsp;&nbsp;
+                        <a id="last">末页</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
         <script>
            $(function() {
