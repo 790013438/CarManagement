@@ -15,8 +15,8 @@
         <h2>违章信息</h2>
         <table>
             <tr>
-                <th>违章原因</th>
-                <th>违章日期</th>
+                <th>原因</th>
+                <th>日期</th>
                 <th>处罚决定</th>
                 <th colspan="2">处理情况</th>
             </tr>
