@@ -1,5 +1,6 @@
 package snippets.jee.car_management.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import snippets.jee.car_management.entity.Info;
 import snippets.jee.car_management.entity.JPAEntityFactoryBean;
+import snippets.jee.car_management.rest.ws.dto.InfoDTO;
 
 @Component
 public class InfoDAO {
@@ -23,7 +25,7 @@ public class InfoDAO {
         entityManagerFactory = entityFactoryBean.getEntityManagerFactory();
     }
 
-    public List<Info> getInfos() {
+    public List<Info> getInfoEntities() {
         //Get entity manager
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
@@ -31,6 +33,27 @@ public class InfoDAO {
         TypedQuery<Info> infoTypeQuery = entityManager.createNamedQuery("Info.findAll", Info.class);
         List<Info> infos = infoTypeQuery.getResultList();
         entityManager.close();
+        return infos;
+    }
+
+    public List<InfoDTO> getInfos() {
+        //get Info entities first
+        List<Info> infoEntities = getInfoEntities();
+
+        //Creat list of course DTOs. This is the result we will return
+        List<InfoDTO> infos = new ArrayList<InfoDTO>();
+
+        for (Info infoEntity : infoEntities) {
+            //Create InfoDTO from Info entity
+            InfoDTO infoDTO = new InfoDTO();
+            infoDTO.setId(infoEntity.getId());
+            infoDTO.setDate(infoEntity.getDate());
+            infoDTO.setProcess(infoEntity.getProcess());
+            infoDTO.setPunish(infoEntity.getPunish());
+            infoDTO.setReason(infoEntity.getReason());
+            infoDTO.setCar(infoEntity.getCar());
+            infos.add(infoDTO);
+        }
         return infos;
     }
 
@@ -50,7 +73,7 @@ public class InfoDAO {
         entityTransaction.commit();
     }
 
-    public Info getCourse (int id) {
+    public Info getInfo (int id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         return entityManager.find(Info.class, id);
     }

@@ -33,7 +33,7 @@ public class Info implements Serializable {
     //bi-directional many-to-one association to Car
     @ManyToOne
     @JoinColumn(name="car_id")
-    private Car tbCar;
+    private Car car;
 
     public Info() {
     }
@@ -78,12 +78,12 @@ public class Info implements Serializable {
         this.reason = reason;
     }
 
-    public Car getTbCar() {
-        return this.tbCar;
+    public Car getCar() {
+        return car;
     }
 
-    public void setTbCar(Car tbCar) {
-        this.tbCar = tbCar;
+    public void setCar(Car car) {
+        this.car = car;
     }
 
 }

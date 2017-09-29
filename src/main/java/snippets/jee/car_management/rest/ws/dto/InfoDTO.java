@@ -20,7 +20,7 @@ public class InfoDTO {
 
     private String reason;
 
-    private Car tbCar;
+    private Car car;
     
     public InfoDTO() {
     }
@@ -31,7 +31,7 @@ public class InfoDTO {
         this.process = process;
         this.punish = punish;
         this.reason = reason;
-        this.tbCar = tbCar;
+        this.car = tbCar;
     }
 
     public int getId() {
@@ -74,11 +74,11 @@ public class InfoDTO {
         this.reason = reason;
     }
 
-    public Car getTbCar() {
-        return tbCar;
+    public Car getCar() {
+        return car;
     }
 
-    public void setTbCar(Car tbCar) {
-        this.tbCar = tbCar;
+    public void setCar(Car tbCar) {
+        this.car = tbCar;
     }
 }
