@@ -20,6 +20,7 @@ import snippets.jee.car_management.util.PageBean;
 @Component
 public class InfoDAO {
 
+    @Autowired
     private EntityManagerFactory entityManagerFactory;
 
     @Autowired

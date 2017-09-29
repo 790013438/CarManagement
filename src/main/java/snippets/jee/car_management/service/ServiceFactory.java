@@ -3,16 +3,15 @@ package snippets.jee.car_management.service;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ServiceFactory {
 
     private static Map<Class<?>, Object> map = new HashMap<>();
 
     static {
         map.put(InfoService.class, new InfoService());
-    }
-
-    private ServiceFactory() {
-        throw new AssertionError();
     }
 
     /**
