@@ -14,7 +14,6 @@ import snippets.jee.car_management.dao.InfoDAO;
 import snippets.jee.car_management.rest.ws.dto.InfoDTO;
 
 @Path("/info")
-@Component("info_ser")
 public class InfoService {
 
     @Autowired
