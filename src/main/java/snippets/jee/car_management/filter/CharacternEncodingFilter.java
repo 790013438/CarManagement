@@ -20,6 +20,12 @@ public class CharacternEncodingFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
+        if (request.getCharacterEncoding() == null) {
+            request.setCharacterEncoding("UTF-8");
+            response.setCharacterEncoding("UTF-8");
+        }
+        // pass the request along the filter chain
+        chain.doFilter(request, response);
     }
 
     @Override
