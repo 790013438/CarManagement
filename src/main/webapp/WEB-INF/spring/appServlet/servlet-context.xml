@@ -22,7 +22,6 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="snippets.jee.car_management" />
-	<context:component-scan base-package="snippets.jee.car_management.rest.ws.services"/>
 	
 	
 	
