@@ -11,73 +11,73 @@ import javax.persistence.*;
 @Entity
 @NamedQuery(name="Info.findAll", query="SELECT i FROM Info i")
 public class Info implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int id;
 
-	private String date;
+    private String date;
 
-	private byte process;
+    private byte process;
 
-	private String punish;
+    private String punish;
 
-	private String reason;
+    private String reason;
 
-	//bi-directional many-to-one association to Car
-	@ManyToOne
-	private Car car;
+    //bi-directional many-to-one association to Car
+    @ManyToOne
+    private Car car;
 
-	public Info() {
-	}
+    public Info() {
+    }
 
-	public int getId() {
-		return this.id;
-	}
+    public int getId() {
+        return this.id;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public String getDate() {
-		return this.date;
-	}
+    public String getDate() {
+        return this.date;
+    }
 
-	public void setDate(String date) {
-		this.date = date;
-	}
+    public void setDate(String date) {
+        this.date = date;
+    }
 
-	public byte getProcess() {
-		return this.process;
-	}
+    public byte getProcess() {
+        return this.process;
+    }
 
-	public void setProcess(byte process) {
-		this.process = process;
-	}
+    public void setProcess(byte process) {
+        this.process = process;
+    }
 
-	public String getPunish() {
-		return this.punish;
-	}
+    public String getPunish() {
+        return this.punish;
+    }
 
-	public void setPunish(String punish) {
-		this.punish = punish;
-	}
+    public void setPunish(String punish) {
+        this.punish = punish;
+    }
 
-	public String getReason() {
-		return this.reason;
-	}
+    public String getReason() {
+        return this.reason;
+    }
 
-	public void setReason(String reason) {
-		this.reason = reason;
-	}
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
 
-	public Car getCar() {
-		return this.car;
-	}
+    public Car getCar() {
+        return this.car;
+    }
 
-	public void setCar(Car car) {
-		this.car = car;
-	}
+    public void setCar(Car car) {
+        this.car = car;
+    }
 
 }

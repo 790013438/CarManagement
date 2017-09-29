@@ -12,67 +12,67 @@ import java.util.List;
 @Entity
 @NamedQuery(name="User.findAll", query="SELECT u FROM User u")
 public class User implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int id;
 
-	private String email;
+    private String email;
 
-	private String name;
+    private String name;
 
-	//bi-directional many-to-one association to Car
-	@OneToMany(mappedBy="user")
-	private List<Car> cars;
+    //bi-directional many-to-one association to Car
+    @OneToMany(mappedBy="user")
+    private List<Car> cars;
 
-	public User() {
-	}
+    public User() {
+    }
 
-	public int getId() {
-		return this.id;
-	}
+    public int getId() {
+        return this.id;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public String getEmail() {
-		return this.email;
-	}
+    public String getEmail() {
+        return this.email;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public String getName() {
-		return this.name;
-	}
+    public String getName() {
+        return this.name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public List<Car> getCars() {
-		return this.cars;
-	}
+    public List<Car> getCars() {
+        return this.cars;
+    }
 
-	public void setCars(List<Car> cars) {
-		this.cars = cars;
-	}
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
+    }
 
-	public Car addCar(Car car) {
-		getCars().add(car);
-		car.setUser(this);
+    public Car addCar(Car car) {
+        getCars().add(car);
+        car.setUser(this);
 
-		return car;
-	}
+        return car;
+    }
 
-	public Car removeCar(Car car) {
-		getCars().remove(car);
-		car.setUser(null);
+    public Car removeCar(Car car) {
+        getCars().remove(car);
+        car.setUser(null);
 
-		return car;
-	}
+        return car;
+    }
 
 }
