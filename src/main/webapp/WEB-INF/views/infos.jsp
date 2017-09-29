@@ -34,8 +34,8 @@
                 loadDataModel(1);
             });
             function loadDataModel(page) {
-                $.getJSON("emp", { 'page': page }, function(json) {
-                    var empList = json.dataModel;
+                $.getJSON("info", { 'page': page }, function(json) {
+                    var infoList = json.dataModel;
                     var prevPage = json.currentPage - 1;
                     var nextPage = json.currentPage + 1;
                     var lastPage = json.totalPage;
@@ -54,23 +54,23 @@
                         $("#next").removeAttr("href");
                         $("#last").removeAttr("href");
                     }
-                    $("#empInfo tr:gt(0)").remove();
-                    for (var i = 0; i < empList.length; ++i) {
-                        var emp = empList[i];
+                    $("#infoInfo tr:gt(0)").remove();
+                    for (var i = 0; i < infoList.length; ++i) {
+                        var info = infoList[i];
                         var tr = $("<tr>")
-                            .append($("<td>").text(emp.no))
+                            .append($("<td>").text(info.id))
                             .append($("<td>").append($("<a>")
-                                    .text(emp.name).attr("href", "empDetail?no=" + emp.no)))
-                            .append($("<td>").text(emp.sex))
-                            .append($("<td>").text(emp.job))
-                            .append($("<td>").text(emp.status))
-                            .append($("<td>").text(emp.tel))
+                                    .text(info.reason).attr("href", "infoDetail?no=" + info.id)))
+                            .append($("<td>").text(info.punish))
+                            .append($("<td>").text(info.date))
+                            .append($("<td>").text(info.process))
+                            .append($("<td>").text(info.tel))
                             .append($("<td>")
-                                    .append($("<a>").text("编辑").attr("href", "editEmp?no=" + emp.no))
+                                    .append($("<a>").text("编辑").attr("href", "editinfo?id=" + info.id))
                                     .append("&nbsp;&nbsp;")
-                                    .append($("<a>").text("删除").attr("href", "delEmp?no=" + emp.no))
+                                    .append($("<a>").text("删除").attr("href", "delinfo?id=" + info.id))
                             );
-                        $("#empInfo").append(tr);
+                        $("#infoInfo").append(tr);
                     }
                 });
             }
