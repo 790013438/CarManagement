@@ -1,6 +1,7 @@
 package snippets.jee.car_management.dao;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Repository;
 import snippets.jee.car_management.entity.Info;
 import snippets.jee.car_management.entity.JPAEntityFactoryBean;
 import snippets.jee.car_management.rest.ws.dto.InfoDTO;
+import snippets.jee.car_management.util.PageBean;
 
 @Repository
 public class InfoDAO {
@@ -40,7 +42,7 @@ public class InfoDAO {
         //get Info entities first
         List<Info> infoEntities = getInfoEntities();
 
-        //Creat list of course DTOs. This is the result we will return
+        //Create list of course DTOs. This is the result we will return
         List<InfoDTO> infos = new ArrayList<InfoDTO>();
 
         for (Info infoEntity : infoEntities) {
@@ -55,6 +57,13 @@ public class InfoDAO {
             infos.add(infoDTO);
         }
         return infos;
+    }
+
+    public PageBean<InfoDTO> getInfos (int page, int size) {
+        List<InfoDTO> list = getInfos();
+        int totalPage = (list.size() - 1) / size + 1;
+        list = list.size() > 0 ? list : Collections.emptyList();
+        return new PageBean<>(list, totalPage, page, size);
     }
 
     public void addInfo (Info info) {

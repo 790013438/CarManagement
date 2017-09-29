@@ -18,4 +18,5 @@ public class InfoController {
         model.addAttribute("infos", infoDAO.getInfos());
         return "infos";
     }
+
 }

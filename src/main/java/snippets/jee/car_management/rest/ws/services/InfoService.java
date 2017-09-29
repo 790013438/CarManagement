@@ -15,14 +15,8 @@ import snippets.jee.car_management.rest.ws.dto.InfoDTO;
 @Path("/info")
 public class InfoService {
 
-    private InfoDAO infoDAO;
-
-    public InfoService() {}
-
     @Autowired
-    public InfoService (InfoDAO infoDAO) {
-        this.infoDAO = infoDAO;
-    }
+    private InfoDAO infoDAO;
 
     @GET
     @Produces (MediaType.APPLICATION_JSON)
