@@ -2,11 +2,12 @@ package snippets.jee.car_management.rest.ws.services;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import snippets.jee.car_management.dao.InfoDAO;
 import snippets.jee.car_management.rest.ws.dto.InfoDTO;
@@ -16,8 +17,8 @@ public class InfoService {
 
     private InfoDAO infoDAO;
 
-    @PostConstruct
-    public void init(InfoDAO infoDAO) {
+    @Autowired
+    public InfoService(InfoDAO infoDAO) {
         this.infoDAO = infoDAO;
     }
 
