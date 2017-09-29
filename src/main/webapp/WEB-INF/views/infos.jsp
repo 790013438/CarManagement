@@ -28,5 +28,52 @@
                 </tr>
             </c:forEach>
         </table>
+        <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+        <script>
+           $(function() {
+                loadDataModel(1);
+            });
+            function loadDataModel(page) {
+                $.getJSON("emp", { 'page': page }, function(json) {
+                    var empList = json.dataModel;
+                    var prevPage = json.currentPage - 1;
+                    var nextPage = json.currentPage + 1;
+                    var lastPage = json.totalPage;
+                    $("#pageInfo").text(json.currentPage + " / " + json.totalPage);
+                    if (json.currentPage > 1) {
+                        $("#first").attr("href", "javascript:loadDataModel(1)");
+                        $("#prev").attr("href", "javascript:loadDataModel(" + prevPage + ")");
+                    } else {
+                        $("#first").removeAttr("href");
+                        $("#prev").removeAttr("href");
+                    }
+                    if (json.currentPage < json.totalPage) {
+                        $("#next").attr("href", "javascript:loadDataModel(" + nextPage + ")")
+                        $("#last").attr("href", "javascript:loadDataModel(" + lastPage + ")")
+                    } else {
+                        $("#next").removeAttr("href");
+                        $("#last").removeAttr("href");
+                    }
+                    $("#empInfo tr:gt(0)").remove();
+                    for (var i = 0; i < empList.length; ++i) {
+                        var emp = empList[i];
+                        var tr = $("<tr>")
+                            .append($("<td>").text(emp.no))
+                            .append($("<td>").append($("<a>")
+                                    .text(emp.name).attr("href", "empDetail?no=" + emp.no)))
+                            .append($("<td>").text(emp.sex))
+                            .append($("<td>").text(emp.job))
+                            .append($("<td>").text(emp.status))
+                            .append($("<td>").text(emp.tel))
+                            .append($("<td>")
+                                    .append($("<a>").text("编辑").attr("href", "editEmp?no=" + emp.no))
+                                    .append("&nbsp;&nbsp;")
+                                    .append($("<a>").text("删除").attr("href", "delEmp?no=" + emp.no))
+                            );
+                        $("#empInfo").append(tr);
+                    }
+                });
+            }
+        </script>
     </body>
 </html>
