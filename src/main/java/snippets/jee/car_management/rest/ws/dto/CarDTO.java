@@ -1,4 +1,4 @@
-package snippets.jee.car_management.dto;
+package snippets.jee.car_management.rest.ws.dto;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
