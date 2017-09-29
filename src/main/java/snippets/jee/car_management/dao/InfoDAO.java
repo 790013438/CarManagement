@@ -10,14 +10,14 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import snippets.jee.car_management.entity.Info;
 import snippets.jee.car_management.entity.JPAEntityFactoryBean;
 import snippets.jee.car_management.rest.ws.dto.InfoDTO;
 import snippets.jee.car_management.util.PageBean;
 
-@Repository
+@Component
 public class InfoDAO {
 
     private EntityManagerFactory entityManagerFactory;

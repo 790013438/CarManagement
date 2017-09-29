@@ -6,7 +6,7 @@ import javax.persistence.Persistence;
 
 import org.springframework.stereotype.Component;
 
-@Component("emFactoryBean")
+@Component
 public class JPAEntityFactoryBean {
 
     EntityManagerFactory entityManagerFactory;
