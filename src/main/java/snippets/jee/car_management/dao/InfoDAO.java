@@ -23,8 +23,8 @@ public class InfoDAO {
     private EntityManagerFactory entityManagerFactory;
 
     @Autowired
-    public InfoDAO (JPAEntityFactoryBean entityFactoryBean) {
-        entityManagerFactory = entityFactoryBean.getEntityManagerFactory();
+    public InfoDAO (JPAEntityFactoryBean jpaEntityFactoryBean) {
+        entityManagerFactory = jpaEntityFactoryBean.getEntityManagerFactory();
     }
 
     public List<Info> getInfoEntities() {
