@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -21,9 +22,11 @@ import snippets.jee.car_management.util.PageBean;
 public class InfoDAO {
 
     private EntityManagerFactory entityManagerFactory;
-
     @Autowired
-    public InfoDAO (JPAEntityFactoryBean jpaEntityFactoryBean) {
+    private JPAEntityFactoryBean jpaEntityFactoryBean;
+
+    @PostConstruct
+    public void init () {
         entityManagerFactory = jpaEntityFactoryBean.getEntityManagerFactory();
     }
 
