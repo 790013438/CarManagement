@@ -1,4 +1,4 @@
-package snippets.jee.entity;
+package snippets.jee.car_management.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
