@@ -3,13 +3,14 @@ package snippets.jee.car_management.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSON;
 
@@ -17,7 +18,7 @@ import snippets.jee.car_management.dao.InfoDAO;
 import snippets.jee.car_management.rest.ws.dto.InfoDTO;
 import snippets.jee.car_management.util.PageBean;
 
-@Controller
+@Component
 @WebServlet("/info")
 public class InfoServlet extends BaseServlet {
 
@@ -27,6 +28,12 @@ public class InfoServlet extends BaseServlet {
 
     @Autowired
     private InfoDAO infoDAO;
+    private InfoDAO infoDAO1;
+
+    @PostConstruct
+    public void init() {
+        infoDAO1 = infoDAO;
+    }
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -40,7 +47,7 @@ public class InfoServlet extends BaseServlet {
             }
         }
         int size = DEFAULT_SIZE;
-        PageBean<InfoDTO> pageBean = infoDAO.getInfos(page, size);
+        PageBean<InfoDTO> pageBean = infoDAO1.getInfos(page, size);
         // 1. 将对象转换成JSON格式的字符串返回给浏览器
         String jsonStr = JSON.toJSONString(pageBean);
         // 2. 把JSON字符串输出到浏览器通过MIME类型告诉浏览器这里是JSON格式

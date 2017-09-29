@@ -8,10 +8,12 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import snippets.jee.car_management.dao.InfoDAO;
 import snippets.jee.car_management.rest.ws.dto.InfoDTO;
 
+@Qualifier("infoService3")
 @Path("/info")
 public class InfoService {
 

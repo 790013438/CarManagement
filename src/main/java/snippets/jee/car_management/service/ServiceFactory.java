@@ -3,6 +3,7 @@ package snippets.jee.car_management.service;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -10,11 +11,11 @@ public class ServiceFactory {
 
     private static Map<Class<?>, Object> map = new HashMap<>();
 
-    static {
-        map.put(InfoService.class, new InfoService());
-    }
+    @Autowired
+    private InfoService infoService;
 
     private ServiceFactory() {
+        map.put(InfoService.class, infoService);
     }
 
     /**
