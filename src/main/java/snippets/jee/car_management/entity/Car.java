@@ -31,7 +31,7 @@ public class Car implements Serializable {
     private User tbUser;
 
     //bi-directional many-to-one association to Info
-    @OneToMany(mappedBy="tbCar")
+    @OneToMany(mappedBy="car")
     private List<Info> tbInfos;
 
     public Car() {
@@ -79,14 +79,14 @@ public class Car implements Serializable {
 
     public Info addTbInfo(Info tbInfo) {
         getTbInfos().add(tbInfo);
-        tbInfo.setTbCar(this);
+        tbInfo.setCar(this);
 
         return tbInfo;
     }
 
     public Info removeTbInfo(Info tbInfo) {
         getTbInfos().remove(tbInfo);
-        tbInfo.setTbCar(null);
+        tbInfo.setCar(null);
 
         return tbInfo;
     }
