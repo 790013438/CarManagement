@@ -20,7 +20,7 @@ public class InfoService {
 
     @GET
     @Produces (MediaType.APPLICATION_JSON)
-    @Path("/getlist")
+    @Path("getlist")
     public List<InfoDTO> getInfo () {
         return infoDAO.getInfos();
     }
