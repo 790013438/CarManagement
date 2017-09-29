@@ -15,12 +15,15 @@ import snippets.jee.car_management.entity.JPAEntityFactoryBean;
 @Component
 public class InfoDAO {
 
+    private EntityManagerFactory entityManagerFactory;
+
     @Autowired
-    JPAEntityFactoryBean entityFactoryBean;
+    public InfoDAO (JPAEntityFactoryBean entityFactoryBean) {
+        entityManagerFactory = entityFactoryBean.getEntityManagerFactory();
+    }
 
     public List<Info> getInfos() {
         //Get entity manager
-        EntityManagerFactory entityManagerFactory = entityFactoryBean.getEntityManagerFactory();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         //Execute Query
