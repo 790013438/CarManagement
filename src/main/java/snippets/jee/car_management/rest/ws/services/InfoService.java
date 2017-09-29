@@ -8,13 +8,13 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Component;
 
 import snippets.jee.car_management.dao.InfoDAO;
 import snippets.jee.car_management.rest.ws.dto.InfoDTO;
 
 @Path("/info")
-@Controller("info_ser")
+@Component("info_ser")
 public class InfoService {
 
     @Autowired

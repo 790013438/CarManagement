@@ -8,11 +8,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.stereotype.Component;
+
 import com.alibaba.fastjson.JSON;
 
 import snippets.jee.car_management.rest.ws.dto.InfoDTO;
 import snippets.jee.car_management.util.PageBean;
 
+@Component
 @WebServlet("/info")
 public class InfoServlet extends BaseServlet {
 
