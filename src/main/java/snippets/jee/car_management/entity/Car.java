@@ -6,85 +6,89 @@ import java.util.List;
 
 
 /**
- * The persistent class for the car database table.
+ * The persistent class for the tb_car database table.
  * 
  */
 @Entity
+@Table(name="tb_car")
 @NamedQuery(name="Car.findAll", query="SELECT c FROM Car c")
 public class Car implements Serializable {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
 
-    private String name;
+	@Column(name="carname")
+	private String name;
 
-    private String plate;
+	@Column(name="carplate")
+	private String plate;
 
-    //bi-directional many-to-one association to User
-    @ManyToOne
-    private User user;
+	//bi-directional many-to-one association to User
+	@ManyToOne
+	@JoinColumn(name="tb_user_id")
+	private User tbUser;
 
-    //bi-directional many-to-one association to Info
-    @OneToMany(mappedBy="car")
-    private List<Info> infos;
+	//bi-directional many-to-one association to Info
+	@OneToMany(mappedBy="tbCar")
+	private List<Info> tbInfos;
 
-    public Car() {
-    }
+	public Car() {
+	}
 
-    public int getId() {
-        return this.id;
-    }
+	public int getId() {
+		return this.id;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public String getName() {
-        return this.name;
-    }
+	public String getName() {
+		return this.name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getPlate() {
-        return this.plate;
-    }
+	public String getPlate() {
+		return this.plate;
+	}
 
-    public void setPlate(String plate) {
-        this.plate = plate;
-    }
+	public void setPlate(String plate) {
+		this.plate = plate;
+	}
 
-    public User getUser() {
-        return this.user;
-    }
+	public User getTbUser() {
+		return this.tbUser;
+	}
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+	public void setTbUser(User tbUser) {
+		this.tbUser = tbUser;
+	}
 
-    public List<Info> getInfos() {
-        return this.infos;
-    }
+	public List<Info> getTbInfos() {
+		return this.tbInfos;
+	}
 
-    public void setInfos(List<Info> infos) {
-        this.infos = infos;
-    }
+	public void setTbInfos(List<Info> tbInfos) {
+		this.tbInfos = tbInfos;
+	}
 
-    public Info addInfo(Info info) {
-        getInfos().add(info);
-        info.setCar(this);
+	public Info addTbInfo(Info tbInfo) {
+		getTbInfos().add(tbInfo);
+		tbInfo.setTbCar(this);
 
-        return info;
-    }
+		return tbInfo;
+	}
 
-    public Info removeInfo(Info info) {
-        getInfos().remove(info);
-        info.setCar(null);
+	public Info removeTbInfo(Info tbInfo) {
+		getTbInfos().remove(tbInfo);
+		tbInfo.setTbCar(null);
 
-        return info;
-    }
+		return tbInfo;
+	}
 
 }
