@@ -26,6 +26,7 @@ public class InfoService1 {
     @Produces (MediaType.APPLICATION_JSON)
     @Path("getlist")
     public List<InfoDTO> getInfo () {
+        //解决@Autowired的偏方
         infoDAO = Register.getInfoDAO();
         return infoDAO.getInfos();
     }
