@@ -5,9 +5,11 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import snippets.jee.car_management.dao.InfoDAO;
 
+@Component
 @WebListener
 public class ContextWebListener implements ServletContextListener {
 

@@ -11,14 +11,16 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.stereotype.Service;
 
 import snippets.jee.car_management.entity.Info;
 import snippets.jee.car_management.entity.JPAEntityFactoryBean;
 import snippets.jee.car_management.rest.ws.dto.InfoDTO;
 import snippets.jee.car_management.util.PageBean;
 
-@Repository
+@Service
+@Configurable
 public class InfoDAO {
 
     private EntityManagerFactory entityManagerFactory;
@@ -26,8 +28,18 @@ public class InfoDAO {
     private JPAEntityFactoryBean jpaEntityFactoryBean;
 
     @PostConstruct
-    public void init () {
+    public void init() {
         entityManagerFactory = jpaEntityFactoryBean.getEntityManagerFactory();
+    }
+
+    public InfoDAO() {}
+
+    public InfoDAO (JPAEntityFactoryBean jpaEntityFactoryBean) {
+        this.entityManagerFactory = jpaEntityFactoryBean.getEntityManagerFactory();
+    }
+
+    public InfoDAO (EntityManagerFactory entityManagerFactory) {
+        this.entityManagerFactory = entityManagerFactory;
     }
 
     public List<Info> getInfoEntities() {

@@ -6,7 +6,7 @@
         <class>snippets.jee.car_management.entity.User</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/car_test"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/car_test?characterEncoding=utf8"/>
             <property name="javax.persistence.jdbc.user" value="user1"/>
             <property name="javax.persistence.jdbc.password" value="37934bit"/>
         </properties>
