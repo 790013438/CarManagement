@@ -9,6 +9,7 @@
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/car_test?characterEncoding=utf8"/>
             <property name="javax.persistence.jdbc.user" value="user1"/>
             <property name="javax.persistence.jdbc.password" value="37934bit"/>
+            <property name="eclipselink.jdbc.exclusive-connection.mode" value="Transactional"/>
         </properties>
     </persistence-unit>
 </persistence>
