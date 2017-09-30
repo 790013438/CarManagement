@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.alibaba.fastjson.JSON;
 
 import snippets.jee.car_management.dao.InfoDAO;
-import snippets.jee.car_management.rest.ws.dto.InfoDTO;
+import snippets.jee.car_management.dto.InfoDTO;
 import snippets.jee.car_management.util.PageBean;
 
 @Controller

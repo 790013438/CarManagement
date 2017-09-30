@@ -1,4 +1,4 @@
-package snippets.jee.car_management.rest.ws.services;
+package snippets.jee.car_management.services;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import snippets.jee.car_management.dao.InfoDAO;
-import snippets.jee.car_management.rest.ws.dto.InfoDTO;
+import snippets.jee.car_management.dto.InfoDTO;
 
 @Path("/info")
 @Component

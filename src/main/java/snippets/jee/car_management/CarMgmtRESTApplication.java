@@ -1,4 +1,4 @@
-package snippets.jee.car_management.rest.ws;
+package snippets.jee.car_management;
 
 import javax.ws.rs.ApplicationPath;
 
@@ -8,6 +8,6 @@ import org.glassfish.jersey.server.ResourceConfig;
 public class CarMgmtRESTApplication extends ResourceConfig {
 
     public CarMgmtRESTApplication () {
-        packages("snippets.jee.car_management.rest.ws.services");
+        packages("snippets.jee.car_management.services");
     }
 }

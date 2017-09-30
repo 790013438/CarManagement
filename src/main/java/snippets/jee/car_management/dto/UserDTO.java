@@ -1,4 +1,4 @@
-package snippets.jee.car_management.rest.ws.dto;
+package snippets.jee.car_management.dto;
 
 import java.math.BigDecimal;
 
