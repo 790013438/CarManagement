@@ -12,21 +12,6 @@
             table, th, td { padding: 5px; border: 1px solid black; }
         </style>
     </head>
-	      <table>
-            <tr>
-                <th>原因</th>
-                <th>日期</th>
-                <th>处罚决定</th>
-                <th colspan="2">处理情况</th>
-            </tr>
-            <c:forEach items="${infos}" var="info">
-                <tr>
-                    <td>${info.reason}</td>
-                    <td>${info.punish}</td>
-                    <td>${info.process}</td>
-                </tr>
-            </c:forEach>
-        </table>
         <div class="container">
             <div class="row clearfix">
                 <div class="col-md-12 column">
@@ -81,7 +66,7 @@
                         $("#next").removeAttr("href");
                         $("#last").removeAttr("href");
                     }
-                    $("#infoInfo tr:gt(0)").remove();
+                    $("#info tr:gt(0)").remove();
                     for (var i = 0; i < infoList.length; ++i) {
                         var info = infoList[i];
                         var tr = $("<tr>")
@@ -97,7 +82,7 @@
                                     .append("&nbsp;&nbsp;")
                                     .append($("<a>").text("删除").attr("href", "delinfo?id=" + info.id))
                             );
-                        $("#infoInfo").append(tr);
+                        $("#info").append(tr);
                     }
                 });
             }
