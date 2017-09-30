@@ -20,7 +20,6 @@
         <beans:property name="prefix" value="/WEB-INF/views/" />
         <beans:property name="suffix" value=".jsp" />
     </beans:bean>
-    <context:component-scan base-package="snippets.jee.car_management.rest.ws.services" />
     <context:component-scan base-package="snippets.jee.car_management" />
 
 </beans:beans>
