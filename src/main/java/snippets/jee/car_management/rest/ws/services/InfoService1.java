@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import snippets.jee.car_management.dao.InfoDAO;
-import snippets.jee.car_management.entity.JPAEntityFactoryBean;
 import snippets.jee.car_management.rest.ws.dto.InfoDTO;
 
 @Path("/info")
