@@ -23,7 +23,7 @@ public class InfoService1 {
     private @Qualifier("jpaEntityFactoryBean") JPAEntityFactoryBean jpaEntityFactoryBean;
 
     @Autowired
-    private InfoDAO infoDAO;
+    private @Qualifier("infoDAO") InfoDAO infoDAO;
 
     @GET
     @Produces (MediaType.APPLICATION_JSON)
@@ -37,7 +37,7 @@ public class InfoService1 {
     }
 
     @Autowired
-    public void setInfoDAO(InfoDAO infoDAO) {
+    public void setInfoDAO(@Qualifier("infoDAO") InfoDAO infoDAO) {
         this.infoDAO = infoDAO;
     }
 
