@@ -20,9 +20,6 @@ import snippets.jee.car_management.rest.ws.dto.InfoDTO;
 public class InfoService1 {
 
     @Autowired
-    private @Qualifier("jpaEntityFactoryBean") JPAEntityFactoryBean jpaEntityFactoryBean;
-
-    @Autowired
     private @Qualifier("infoDAO") InfoDAO infoDAO;
 
     @GET
@@ -39,14 +36,5 @@ public class InfoService1 {
     @Autowired
     public void setInfoDAO(@Qualifier("infoDAO") InfoDAO infoDAO) {
         this.infoDAO = infoDAO;
-    }
-
-    public JPAEntityFactoryBean getJpaEntityFactoryBean() {
-        return jpaEntityFactoryBean;
-    }
-
-    @Autowired
-    public void setJpaEntityFactoryBean(@Qualifier("jpaEntityFactoryBean") JPAEntityFactoryBean jpaEntityFactoryBean) {
-        this.jpaEntityFactoryBean = jpaEntityFactoryBean;
     }
 }
