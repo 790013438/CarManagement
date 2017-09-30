@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.alibaba.fastjson.JSON;
 
@@ -32,7 +31,7 @@ public class InfoController {
         return "infos";
     }
 
-    @RequestMapping(value="/info", method=RequestMethod.POST)
+    @RequestMapping("/info")
     public void getInfo(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         int page = DEFAULT_PAGE;
         String pageStr = req.getParameter("page");
