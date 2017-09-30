@@ -28,6 +28,7 @@ public class InfoController {
     @RequestMapping("/infos")
     public String getInfos (Model model) {
         model.addAttribute("infos", infoDAO.getInfos());
+        Register.setInfoDAO(infoDAO);
         return "infos";
     }
 

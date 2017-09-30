@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+import snippets.jee.car_management.controller.Register;
 import snippets.jee.car_management.dao.InfoDAO;
 import snippets.jee.car_management.entity.JPAEntityFactoryBean;
 import snippets.jee.car_management.rest.ws.dto.InfoDTO;
@@ -29,6 +30,8 @@ public class InfoService1 {
     @Produces (MediaType.APPLICATION_JSON)
     @Path("getlist")
     public List<InfoDTO> getInfo () {
+        //遇到@Autowired null,无奈的解决办法
+        infoDAO = Register.getInfoDAO();
         return infoDAO.getInfos();
     }
 
