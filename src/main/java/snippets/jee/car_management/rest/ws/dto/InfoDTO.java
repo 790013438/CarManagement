@@ -12,6 +12,10 @@ public class InfoDTO {
 
     private int id;
 
+    private String username;
+
+    private String carplate;
+
     private String date;
 
     private String process;

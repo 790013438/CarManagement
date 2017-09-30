@@ -81,7 +81,7 @@ public class InfoDAO {
     public PageBean<InfoDTO> getInfos (int page, int size) {
         List<InfoDTO> list = getInfos();
         int totalPage = (list.size() - 1) / size + 1;
-        list = list.size() > 0 ? list : Collections.emptyList();
+        list = list.size() > 0 ? list.subList((page - 1) / size, size) : Collections.emptyList();
         return new PageBean<>(list, totalPage, page, size);
     }
 
