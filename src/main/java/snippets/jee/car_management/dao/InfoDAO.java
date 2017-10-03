@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import snippets.jee.car_management.entity.Car;
 import snippets.jee.car_management.entity.Info;
 import snippets.jee.car_management.entity.JPAEntityFactoryBean;
 import snippets.jee.car_management.rest.ws.dto.InfoDTO;
@@ -62,9 +63,16 @@ public class InfoDAO {
             infoDTO.setProcess(infoEntity.getProcess());
             infoDTO.setPunish(infoEntity.getPunish());
             infoDTO.setReason(infoEntity.getReason());
+            infos.add(infoDTO);
+
+            Car car = infoEntity.getCar();
+            //check whether car was null in the table
+            if (null == car) {
+                //on car set for this info
+                continue;
+            }
             infoDTO.setCar(infoEntity.getCar());
             infoDTO.setCarplate(infoEntity.getCar().getPlate());
-            infos.add(infoDTO);
         }
         return infos;
     }
