@@ -76,7 +76,7 @@ public class InfoDAO {
         if (listSize == 0) {
             return new PageBean<>(Collections.emptyList(), totalPage, page, size);
         }
-        list = listSize > 5 ? list.subList((page - 1) / size, size) : list;
+        list = listSize > 5 ? list.subList((page - 1) * size, size) : list;
         return new PageBean<>(list, totalPage, page, size);
     }
 
