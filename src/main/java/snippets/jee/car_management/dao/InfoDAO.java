@@ -63,6 +63,7 @@ public class InfoDAO {
             infoDTO.setPunish(infoEntity.getPunish());
             infoDTO.setReason(infoEntity.getReason());
             infoDTO.setCar(infoEntity.getCar());
+            infoDTO.setCarplate(infoEntity.getCar().getPlate());
             infos.add(infoDTO);
         }
         return infos;
