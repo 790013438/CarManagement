@@ -36,22 +36,12 @@ public class InfoDAO {
         entityManagerFactory = jpaEntityFactoryBean.getEntityManagerFactory();
     }
 
-    public InfoDAO() {}
-
-    public InfoDAO (JPAEntityFactoryBean jpaEntityFactoryBean) {
-        this.entityManagerFactory = jpaEntityFactoryBean.getEntityManagerFactory();
-    }
-
-    public InfoDAO (EntityManagerFactory entityManagerFactory) {
-        this.entityManagerFactory = entityManagerFactory;
-    }
-
     public List<Info> getInfoEntities() {
         //Get entity manager
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         //Execute Query
-        TypedQuery<Info> infoTypeQuery = entityManager.createNamedQuery("Info.findAll", Info.class);
+        TypedQuery<Info> infoTypeQuery = entityManager.createNamedQuery("Info.findInfo", Info.class);
         List<Info> infos = infoTypeQuery.getResultList();
         entityManager.close();
         return infos;
@@ -81,7 +71,11 @@ public class InfoDAO {
     public PageBean<InfoDTO> getInfos (int page, int size) {
         List<InfoDTO> list = getInfos();
         int totalPage = (list.size() - 1) / size + 1;
-        list = list.size() > 0 ? list.subList((page - 1) / size, size) : Collections.emptyList();
+        int listSize = list.size();
+        if (listSize == 0) {
+            return new PageBean<>(Collections.emptyList(), totalPage, page, size);
+        }
+        list = listSize > 5 ? list.subList((page - 1) / size, size) : list;
         return new PageBean<>(list, totalPage, page, size);
     }
 

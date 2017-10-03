@@ -2,7 +2,6 @@ package snippets.jee.car_management.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -22,7 +21,7 @@ public class User implements Serializable {
 
     private String email;
 
-    private BigDecimal username;
+    private String username;
 
     //bi-directional many-to-one association to Car
     @OneToMany(mappedBy="tbUser")
@@ -47,11 +46,11 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public BigDecimal getUsername() {
+    public String getUsername() {
         return this.username;
     }
 
-    public void setUsername(BigDecimal username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 

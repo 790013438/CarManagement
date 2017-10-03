@@ -10,7 +10,10 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="tb_info")
-@NamedQuery(name="Info.findAll", query="SELECT i FROM Info i")
+@NamedQueries({
+    @NamedQuery(name="Info.findAll", query="SELECT i FROM Info i"),
+    @NamedQuery(name="Info.findInfo", query="SELECT i FROM Info i LEFT OUTER JOIN FETCH i.car")
+})
 public class Info implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -79,11 +82,11 @@ public class Info implements Serializable {
     }
 
     public Car getCar() {
-        return car;
+        return this.car;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
+    public void setCar(Car tbCar) {
+        this.car = tbCar;
     }
 
 }

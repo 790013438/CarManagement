@@ -85,4 +85,20 @@ public class InfoDTO {
     public void setCar(Car tbCar) {
         this.car = tbCar;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getCarplate() {
+        return carplate;
+    }
+
+    public void setCarplate(String carplate) {
+        this.carplate = carplate;
+    }
 }
