@@ -3,6 +3,8 @@ package snippets.jee.car_management.dao;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
@@ -129,5 +131,22 @@ public class InfoDAO {
         Info mergedInfo = entityManager.find(Info.class, info.getId());
         entityManager.remove(mergedInfo);
         entityTransaction.commit();
+    }
+
+    public List<InfoDTO> getInfos (String name) {
+        List<InfoDTO> infos = getInfos();
+        List<InfoDTO> resultInfo = new ArrayList<>();
+        Pattern pattern = Pattern.compile(name);
+        for (InfoDTO info : infos) {
+            Matcher plateMatcher = pattern.matcher(info.getCarplate());
+            Matcher userMatcher = pattern.matcher(info.getUsername());
+            if (plateMatcher.find()) {
+                resultInfo.add(info);
+            }
+            if (userMatcher.find()) {
+                resultInfo.add(info);
+            }
+        }
+        return resultInfo;
     }
 }
