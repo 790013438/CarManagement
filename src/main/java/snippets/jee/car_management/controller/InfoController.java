@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.alibaba.fastjson.JSON;
 
@@ -25,10 +27,19 @@ public class InfoController {
     @Autowired
     InfoDAO infoDAO;
 
-    @RequestMapping("/infos")
+    @RequestMapping(value="/infos", method=RequestMethod.GET)
     public String getInfos (Model model) {
         model.addAttribute("infos", infoDAO.getInfos());
+        model.addAttribute("enterString", new String());
         Register.setInfoDAO(infoDAO);
+        return "infos";
+    }
+
+    @RequestMapping(value="/infos", method=RequestMethod.POST)
+    public String search (@ModelAttribute("enterString") String enterString, Model model) {
+        enterString = enterString.trim();
+        enterString = enterString.replaceAll("\\s+", "");
+        model.addAttribute("searchInfo", infoDAO.getInfos(enterString));
         return "infos";
     }
 
