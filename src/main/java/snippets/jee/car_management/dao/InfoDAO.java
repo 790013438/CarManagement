@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import snippets.jee.car_management.entity.Car;
 import snippets.jee.car_management.entity.Info;
 import snippets.jee.car_management.entity.JPAEntityFactoryBean;
+import snippets.jee.car_management.entity.User;
 import snippets.jee.car_management.rest.ws.dto.InfoDTO;
 import snippets.jee.car_management.util.PageBean;
 
@@ -52,7 +53,7 @@ public class InfoDAO {
         //get Info entities first
         List<Info> infoEntities = getInfoEntities();
 
-        //Create list of course DTOs. This is the result we will return
+        //Create list of info DTOs. This is the result we will return
         List<InfoDTO> infos = new ArrayList<InfoDTO>();
 
         for (Info infoEntity : infoEntities) {
@@ -73,18 +74,30 @@ public class InfoDAO {
             }
             infoDTO.setCar(infoEntity.getCar());
             infoDTO.setCarplate(infoEntity.getCar().getPlate());
+
+            User user = car.getTbUser();
+            //check whether user was null in the table
+            if (null == user) {
+                //on user set for this info
+                continue;
+            }
+            infoDTO.setUsername(user.getUsername());
         }
         return infos;
     }
 
     public PageBean<InfoDTO> getInfos (int page, int size) {
         List<InfoDTO> list = getInfos();
-        int totalPage = (list.size() - 1) / size + 1;
         int listSize = list.size();
+        int totalPage = (listSize - 1) / size + 1;
         if (listSize == 0) {
             return new PageBean<>(Collections.emptyList(), totalPage, page, size);
         }
-        list = listSize > 5 ? list.subList((page - 1) * size, size) : list;
+        int startIndex = (page - 1) * size;
+        if (startIndex + size > listSize) {
+            return new PageBean<>(list.subList(startIndex, listSize), totalPage, page, size);
+        }
+        list = listSize > 5 ? list.subList(startIndex, startIndex + size) : list;
         return new PageBean<>(list, totalPage, page, size);
     }
 

@@ -1,19 +1,18 @@
 package snippets.jee.car_management.rest.ws.dto;
 
-import java.math.BigDecimal;
-
 public class UserDTO {
 
     private int id;
 
     private String email;
 
-    private BigDecimal username;
+    private String username;
 
     public UserDTO() {
     }
 
-    public UserDTO(int id, String email, BigDecimal username) {
+    public UserDTO(int id, String email, String username) {
+        super();
         this.id = id;
         this.email = email;
         this.username = username;
@@ -35,11 +34,11 @@ public class UserDTO {
         this.email = email;
     }
 
-    public BigDecimal getUsername() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUsername(BigDecimal username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
