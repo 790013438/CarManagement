@@ -2,6 +2,9 @@ package snippets.jee.car_management.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,8 +40,24 @@ public class InfoController {
 
     @RequestMapping(value="/infos", method=RequestMethod.POST)
     public String search (@ModelAttribute("enterString") String enterString, Model model) {
+        //如果没有enterString,则返回infos网页
+        if (enterString == null) {
+            return "infos";
+        }
+
         enterString = enterString.trim();
+        String[] words = enterString.split("\\s+");
+        List<InfoDTO> infoList = new ArrayList<>();
+        for (String word : words) {
+            infoList.addAll(infoDAO.getInfos(word));
+        }
+
+        //判断输入的字符串为全空格，则返回
         enterString = enterString.replaceAll("\\s+", "");
+        if (enterString.length() == 0) {
+            return "infos";
+        }
+
         model.addAttribute("searchInfo", infoDAO.getInfos(enterString));
         return "infos";
     }
