@@ -1,15 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Insert title here</title>
         <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="static/css/search.css" rel="stylesheet" type="text/css"/>
         <style>
-            table { border-collapse: collapse; border-spacing: 0px; }
+            table { border-collapse: collapse; border-spacing: 0px; position:relative;}
 
             table, th, td { padding: 5px; border: 1px solid black; }
+            form {margin: 0 0 20px;}
         </style>
     </head>
         <div class="container">
@@ -17,8 +19,23 @@
                 <div class="col-md-12 column">
                     <h1>违章信息</h1>
                     <hr>
-                    <c:if test="${not empty hint}">
-                        <span style="color='red''">${hint}</span>
+                    <div class="container">
+                        <form method="POST" class="search">
+                            <div class="field">
+                                <input type="text" value="${enterString}" class="input-search" id="enterString" name="enterString" required>
+                                <label for="input-search">搜索</label>
+                            </div>
+                            <button class="btn" type="submit">查找</button>
+                        </form>
+                    </div>
+                    <c:if test="${not empty searchInfo}">
+                        <table class="table table-striped">
+                            <c:forEach items="${searchInfo}" var="info">
+                                <tr>
+                                    <td>${info.id}</td>
+                                </tr>
+                            </c:forEach>
+                        </table>
                     </c:if>
                     <table id="info" class="table table-striped">
                         <tr>
@@ -78,11 +95,7 @@
                             .append($("<td>").text(info.reason))
                             .append($("<td>").text(info.punish))
                             .append($("<td>").text(info.process))
-                            .append($("<td>")
-                                    .append($("<a>").text("编辑").attr("href", "editinfo?id=" + info.id))
-                                    .append("&nbsp;&nbsp;")
-                                    .append($("<a>").text("删除").attr("href", "delinfo?id=" + info.id))
-                            );
+                            .append();
                         $("#info").append(tr);
                     }
                 });
