@@ -30,9 +30,24 @@
                     </div>
                     <c:if test="${not empty searchInfo}">
                         <table class="table table-striped">
+                            <tr>
+                                <th>处理编号</th>
+                                <th>车主姓名</th>
+                                <th>车牌号</th>
+                                <th>违章日期</th>
+                                <th>违章原因</th>
+                                <th>处理决定</th>
+                                <th>处理情况</th>
+                            </tr>
                             <c:forEach items="${searchInfo}" var="info">
                                 <tr>
                                     <td>${info.id}</td>
+                                    <td>${info.username}</td>
+                                    <td>${info.carplate}</td>
+                                    <td>${info.date}</td>
+                                    <td>${info.reason}</td>
+                                    <td>${info.punish}</td>
+                                    <td>${info.process}</td>
                                 </tr>
                             </c:forEach>
                         </table>
