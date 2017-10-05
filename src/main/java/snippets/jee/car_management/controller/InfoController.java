@@ -3,8 +3,10 @@ package snippets.jee.car_management.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -58,7 +60,11 @@ public class InfoController {
             return "infos";
         }
 
-        model.addAttribute("searchInfo", infoDAO.getInfos(enterString));
+        //去重
+        infoList = infoList.stream().collect(Collectors.collectingAndThen(
+                Collectors.toCollection(() -> new TreeSet<>(Comparator.comparingLong(InfoDTO::getId))), ArrayList::new)); 
+
+        model.addAttribute("searchInfo", infoList);
         return "infos";
     }
 
