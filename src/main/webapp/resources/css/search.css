@@ -1,0 +1,16 @@
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body { background-color: #e9e9e9; color: #282828; font: 400 1em/1.5em sans-serif; margin: 0; }
+
+//.container { left: 50%; position: relative; top: 50%; transform: translate(-50%, -50%); }
+
+.search { width: 24em; }
+.search .field { position: relative; }
+.search label { background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAQAAAC1QeVaAAAAxElEQVR4AXXPIUuDcRDA4Zv4AUSwTLEKVoNlySyCYLO98CCsahGrX0AW/QhmBRHEJghLS4JFBBXDgrJi2In78w8v4v3S8XDh4nd0DTxLEzd2RC2EnrH07trQVDrXqbhs7FvfnBDWDKWTigOpL2oWvZpYKPjio1zVHEt7BdOtaLUtHRX8MmqjRjooeCVttPBOWi+4JT1aLaDjVLpU/5ytn840Dj1IaWSpYmi8yVlTF54qh9K8nn27usJK5fC3yvfhPx7a/AE9dYwDEfKrlAAAAABJRU5ErkJggg==) no-repeat 0 50%; color: #b2b2b2; left: 50%; position: absolute; transform: translate(-50%, -50%); top: 50%; transition: left .4s, transform .4s; padding-left: 1.25em; }
+.search .input-search { border: 1px solid #dfdfdf; border-radius: .25em; box-shadow: 0 1px 0 #bfbebf; display: block; font: 400 1em/1.5em sans-serif; padding: .5em 1.75em; width: 100%; margin: 0 0 8px;}
+.search .input-search:focus + label, .search .input-search:valid + label { left: .5em; transform: translate(0, -50%); }
+.search .input-search:valid + label { text-indent: -9999px; }
+
+/*# sourceMappingURL=search.css.map */

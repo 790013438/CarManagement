@@ -101,4 +101,68 @@ public class InfoDTO {
     public void setCarplate(String carplate) {
         this.carplate = carplate;
     }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((car == null) ? 0 : car.hashCode());
+        result = prime * result + ((carplate == null) ? 0 : carplate.hashCode());
+        result = prime * result + ((date == null) ? 0 : date.hashCode());
+        result = prime * result + id;
+        result = prime * result + ((process == null) ? 0 : process.hashCode());
+        result = prime * result + ((punish == null) ? 0 : punish.hashCode());
+        result = prime * result + ((reason == null) ? 0 : reason.hashCode());
+        result = prime * result + ((username == null) ? 0 : username.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        InfoDTO other = (InfoDTO) obj;
+        if (car == null) {
+            if (other.car != null)
+                return false;
+        } else if (!car.equals(other.car))
+            return false;
+        if (carplate == null) {
+            if (other.carplate != null)
+                return false;
+        } else if (!carplate.equals(other.carplate))
+            return false;
+        if (date == null) {
+            if (other.date != null)
+                return false;
+        } else if (!date.equals(other.date))
+            return false;
+        if (id != other.id)
+            return false;
+        if (process == null) {
+            if (other.process != null)
+                return false;
+        } else if (!process.equals(other.process))
+            return false;
+        if (punish == null) {
+            if (other.punish != null)
+                return false;
+        } else if (!punish.equals(other.punish))
+            return false;
+        if (reason == null) {
+            if (other.reason != null)
+                return false;
+        } else if (!reason.equals(other.reason))
+            return false;
+        if (username == null) {
+            if (other.username != null)
+                return false;
+        } else if (!username.equals(other.username))
+            return false;
+        return true;
+    }
 }
