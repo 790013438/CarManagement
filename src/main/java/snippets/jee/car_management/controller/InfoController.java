@@ -3,6 +3,7 @@ package snippets.jee.car_management.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.TreeSet;
@@ -63,6 +64,19 @@ public class InfoController {
         //去重
         infoList = infoList.stream().collect(Collectors.collectingAndThen(
                 Collectors.toCollection(() -> new TreeSet<>(Comparator.comparingLong(InfoDTO::getId))), ArrayList::new)); 
+
+        //排序
+        Collections.sort(infoList, new Comparator<InfoDTO>() {
+
+            @Override
+            public int compare(InfoDTO o1, InfoDTO o2) {
+                if (o1.getDate() == null || o2.getDate() == null) {
+                    return 0;
+                }
+                return o2.getDate().compareTo(o1.getDate());
+            }
+            
+        });
 
         model.addAttribute("searchInfo", infoList);
         return "infos";
